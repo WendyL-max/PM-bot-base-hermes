@@ -52,7 +52,7 @@ Before setting up the integration, make sure you have:
 
 ## 4. Create a Lark App
 
-Hermes creates with one click
+Hermes creates with one click, you can refer(https://hermes-agent.nousresearch.com/docs/zh-Hans/user-guide/messaging/feishu)
 
 ---
 

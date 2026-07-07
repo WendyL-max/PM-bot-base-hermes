@@ -2,10 +2,10 @@
 # Environment variables for Lark Task Daily Reminder
 
 # Lark API credentials
-export LARK_APP_ID="cli_aaa03a9afd399eea"
-export LARK_APP_SECRET="z81dmYHofkA3FFBHLjkivhNJcEg2EW5u"
-export LARK_BASE_TOKEN="Fw8qb31XFaGN6assxmRl0Y5fg9c"
-export LARK_TABLE_ID="tblvHm23ajXhrXzp"
+export LARK_APP_ID="cliXXXXXXXXXXXXXXXXXXXXXXX"
+export LARK_APP_SECRET="zXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+export LARK_BASE_TOKEN="FwXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+export LARK_TABLE_ID="tbXXXXXXXXXXXXXXXXX"
 
 # WhatsApp configuration
 export WHATSAPP_CHAT_ID="your_whatsapp_chat_id_here"

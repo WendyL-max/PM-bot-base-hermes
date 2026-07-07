@@ -398,14 +398,3 @@ GET /test/lark
 - 性能優化
 - 監控儀表板
 
-## 支持聯繫
-
-### 技術支持
-- **文檔：** [GitHub Wiki](https://github.com/your-repo/wiki)
-- **問題：** [GitHub Issues](https://github.com/your-repo/issues)
-- **郵件：** support@example.com
-
-### 緊急聯繫
-- **服務中斷：** +1-234-567-8900
-- **安全問題：** security@example.com
-- **業務咨詢：** business@example.com

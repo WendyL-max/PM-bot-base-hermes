@@ -60,24 +60,16 @@ Hermes creates with one click, you can refer(https://hermes-agent.nousresearch.c
 
 Hermes must be granted the permissions needed to read and write Lark resources.
 
-The exact permissions depend on your implementation, but typically you need access to:
+The specific permissions depend on your implementation, but in the Lark segment you usually need permissions to access the following business sections:
+- Messages and Groups
+- multidimensional table(base:xxxx:xxx)
+- Cloud documents
 
-- document reading
-- document writing
-- multi-dimensional table access
-- file or base metadata access
-- workspace resource access
 
 ### Permission principle
 
-Use the **minimum required permissions**.  
-Do not grant more access than the bot actually needs.
-
-### Important notes
-
-- If a skill only needs to read data, do not give it unnecessary write permissions
-- If a skill only updates a specific document, restrict access to that document where possible
-- Review permissions periodically to avoid overexposure
+When activating, both application identity and user identity need to be activated.
+Only after the permissions are opened on the Lark side, Hermes can obtain subsequent APIs through dialogue.
 
 ---
 

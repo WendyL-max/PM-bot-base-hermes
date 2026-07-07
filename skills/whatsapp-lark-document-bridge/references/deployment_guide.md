@@ -50,8 +50,8 @@ nano .env
 **`.env` 文件內容示例：**
 ```env
 # Lark API 配置
-LARK_APP_ID=cli_aaa03a9afd399eea
-LARK_APP_SECRET=z81dmYHofkA3FFBHLjkivhNJcEg2EW5u
+LARK_APP_ID=cli_XXXXXXXXXXXXXXXX
+LARK_APP_SECRET=zXXXXXXXXXXXXXXXXXXXXXXX
 
 # WhatsApp API 配置
 WHATSAPP_ACCESS_TOKEN=your_whatsapp_access_token
@@ -514,15 +514,3 @@ REDIS_URL=redis://localhost:6379/0
    ```bash
    sudo systemctl start whatsapp-lark-bridge
    ```
-
-## 支持聯繫
-
-### 獲取幫助
-- **文檔：** [GitHub Wiki](https://github.com/your-repo/wiki)
-- **問題：** [GitHub Issues](https://github.com/your-repo/issues)
-- **討論：** [GitHub Discussions](https://github.com/your-repo/discussions)
-
-### 緊急聯繫
-- **服務中斷：** +1-234-567-8900
-- **安全漏洞：** security@example.com
-- **業務咨詢：** business@example.com

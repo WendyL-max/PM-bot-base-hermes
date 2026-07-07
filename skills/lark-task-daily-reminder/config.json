@@ -1,0 +1,18 @@
+{
+    "LARK_APP_ID": "cli_aaa03a9afd399eea",
+    "LARK_APP_SECRET": "z81dmYHofkA3FFBHLjkivhNJcEg2EW5u",
+    "LARK_TABLE_TOKEN": "Fw8qb31XFaGN6assxmRl0Y5fg9c",
+    "LARK_TABLE_ID": "tblvHm23ajXhrXzp",
+    "WHATSAPP_CHAT_ID": "42864109191222@lid",
+    "REMINDER_HOUR": 9,
+    "REMINDER_TIMEZONE": "Asia/Hong_Kong",
+    "LOG_LEVEL": "INFO",
+    "LOG_DIR": "/var/log/lark-reminder",
+    "FIELD_MAPPING": {
+        "task_title": "Task",
+        "assignee": "Assignee",
+        "due_date": "預計完成日期",
+        "status": "Status",
+        "doc_link": "Description"
+    }
+}

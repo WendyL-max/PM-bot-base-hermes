@@ -1,0 +1,146 @@
+{
+  "name": "team-capability-manager",
+  "description": "團隊能力管理技能測試案例",
+  "version": "1.0",
+  "tests": [
+    {
+      "name": "test_01_add_member_success",
+      "input": "新增組員：John，員工編號：EMP001，email：john@company.com，團隊：開發組",
+      "expected": {
+        "status": "success",
+        "operation": "add_member"
+      },
+      "description": "成功新增成員 - 基本資訊"
+    },
+    {
+      "name": "test_02_add_member_with_skills",
+      "input": "新增成員：Alice，編號：EMP002，郵箱：alice@company.com，團隊：測試組，技能：Python(L3), JavaScript(L2)",
+      "expected": {
+        "status": "success",
+        "operation": "add_member"
+      },
+      "description": "成功新增成員 - 包含技能"
+    },
+    {
+      "name": "test_03_add_member_missing_email",
+      "input": "新增組員：Bob，員工編號：EMP003，團隊：開發組",
+      "expected": {
+        "status": "failed",
+        "operation": "add_member",
+        "error_contains": "缺少必填欄位"
+      },
+      "description": "新增成員失敗 - 缺少必填欄位"
+    },
+    {
+      "name": "test_04_update_member_skills",
+      "input": "更新John的技能：新增React(L4)",
+      "expected": {
+        "status": "success",
+        "operation": "update_member"
+      },
+      "description": "成功更新成員技能"
+    },
+    {
+      "name": "test_05_update_member_status",
+      "input": "更新EMP001的狀態為on_leave",
+      "expected": {
+        "status": "success",
+        "operation": "update_member"
+      },
+      "description": "成功更新成員狀態"
+    },
+    {
+      "name": "test_06_deactivate_member",
+      "input": "停用Alice",
+      "expected": {
+        "status": "success",
+        "operation": "deactivate_member"
+      },
+      "description": "成功停用成員"
+    },
+    {
+      "name": "test_07_query_by_skill",
+      "input": "查詢所有Python L3以上的成員",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "成功查詢 - 按技能和等級"
+    },
+    {
+      "name": "test_08_query_active_members",
+      "input": "找有React技能且狀態為active的成員",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "成功查詢 - 按技能和狀態"
+    },
+    {
+      "name": "test_09_query_by_team",
+      "input": "查詢開發組所有成員",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "成功查詢 - 按團隊"
+    },
+    {
+      "name": "test_10_query_skill_keyword",
+      "input": "找技能包含JavaScript的成員",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "成功查詢 - 技能關鍵字"
+    },
+    {
+      "name": "test_11_add_duplicate_employee_id",
+      "input": "新增組員：Charlie，員工編號：EMP001，email：charlie@company.com，團隊：開發組",
+      "expected": {
+        "status": "failed",
+        "operation": "add_member",
+        "error_contains": "已存在"
+      },
+      "description": "新增成員失敗 - 重複員工編號"
+    },
+    {
+      "name": "test_12_add_invalid_skill_level",
+      "input": "新增組員：David，員工編號：EMP004，email：david@company.com，團隊：開發組，技能：Python(L6)",
+      "expected": {
+        "status": "failed",
+        "operation": "add_member",
+        "error_contains": "技能等級必須是1-5的整數"
+      },
+      "description": "新增成員失敗 - 無效技能等級"
+    },
+    {
+      "name": "test_13_update_nonexistent_member",
+      "input": "更新不存在的成員的技能",
+      "expected": {
+        "status": "failed",
+        "operation": "update_member",
+        "error_contains": "找不到成員"
+      },
+      "description": "更新成員失敗 - 成員不存在"
+    },
+    {
+      "name": "test_14_natural_language_complex",
+      "input": "我需要一個Python專家來處理後端開發，最好是L4以上，團隊要是開發組的",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "自然語言查詢 - 複雜需求"
+    },
+    {
+      "name": "test_15_whatsapp_mention",
+      "input": "@TeamCapability 幫我找一下有Docker經驗的工程師",
+      "expected": {
+        "status": "success",
+        "operation": "query_members"
+      },
+      "description": "WhatsApp提及觸發"
+    }
+  ]
+}

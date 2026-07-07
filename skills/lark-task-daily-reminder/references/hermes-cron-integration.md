@@ -13,7 +13,7 @@ This document details the integration between the Lark Task Daily Reminder skill
 
 ### ⚠️ CRITICAL: deliver Setting
 The `deliver` field determines WHERE the cron agent's response goes:
-- `"whatsapp:120363427742617493"` → **sends to WhatsApp group** ✅
+- `"whatsapp:120XXXXXXXXXXXX7493"` → **sends to WhatsApp group** ✅
 - `"local"` → **saves to file only, NEVER reaches WhatsApp** ❌
 - `"origin"` → sends back to the channel that created the job (usually CLI, not WhatsApp)
 - `"all"` → fans out to every connected channel
@@ -22,7 +22,7 @@ The `deliver` field determines WHERE the cron agent's response goes:
 To fix a wrong `deliver`, you must delete and recreate the job:
 ```bash
 hermes cron remove <job_id>
-hermes cron create ... --deliver "whatsapp:120363427742617493"
+hermes cron create ... --deliver "whatsapp:120XXXXXXXXXXXX7493"
 ```
 
 Always verify with `hermes cron list` — if `deliver` is `"local"`, messages stay on disk.
@@ -32,11 +32,11 @@ Hermes cron jobs can pass environment variables directly to the skill execution:
 
 ```bash
 # Environment variables used by the skill
-LARK_APP_ID=cli_aaa03a9afd399eea
-LARK_APP_SECRET=z81dmYHofkA3FFBHLjkivhNJcEg2EW5u
-LARK_TABLE_TOKEN=Fw8qb31XFaGN6assxmRl0Y5fg9c
-LARK_TABLE_ID=tblvHm23ajXhrXzp
-WHATSAPP_CHAT_ID=120363427742617493
+LARK_APP_ID=cli_XXXXXXXXXXXXXXX
+LARK_APP_SECRET=z81dXXXXXXXXXXXXXXXXXXXXXX
+LARK_TABLE_TOKEN=Fw8XXXXXXXXXXXXXXXXXXXXX
+LARK_TABLE_ID=tbXXXXXXXXXXXXXXX
+WHATSAPP_CHAT_ID=XXXXXXXXXXXXXXXXXX
 ```
 
 ### 3. Execution Flow (v3)
@@ -84,7 +84,7 @@ hermes cron create \
   --name "Lark Task Daily Reminder" \
   --schedule "0 9 * * *" \
   --skills lark-task-daily-reminder \
-  --deliver "whatsapp:120363427742617493" \
+  --deliver "whatsapp:120XXXXXXXXXXXX7493" \
   --enabled_toolsets terminal,file \
   --prompt "..."   # see SKILL.md for full prompt
 ```
@@ -107,7 +107,7 @@ hermes cron remove <duplicate_job_id>
 ```bash
 # Update job with correct environment variables
 hermes cron update 3987627b8a50 \
-  --env LARK_APP_ID=cli_aaa03a9afd399eea \
+  --env LARK_APP_ID=cli_XXXXXXXXXXXXXXXX \
   --env LARK_APP_SECRET=actual_secret \
   --env WHATSAPP_CHAT_ID=actual_chat_id
 ```
@@ -194,7 +194,7 @@ From actual deployment:
 - **Schedule**: `0 9 * * *` (9:00 AM HKT)
 - **Skills**: `lark-task-daily-reminder`
 - **Toolsets**: `terminal`, `file`
-- **Deliver**: `whatsapp:120363427742617493` (sends to WhatsApp group)
+- **Deliver**: `whatsapp:120XXXXXXXXXXXX7493` (sends to WhatsApp group)
 - **Script**: `run_reminder.py` v3 (timeout=30s, retry=3/backoff=2s, concurrency=5)
 - **Output**: JSON logs in `~/.lark-reminder-logs/`
 - **Status**: Detects D-1 tasks and delivers to WhatsApp daily at 9:00 AM HKT

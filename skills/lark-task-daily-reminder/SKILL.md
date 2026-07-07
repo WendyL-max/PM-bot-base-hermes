@@ -60,8 +60,8 @@ Set the following environment variables:
 ```bash
 export LARK_APP_ID="your_app_id"
 export LARK_APP_SECRET="your_app_secret"
-export LARK_BASE_TOKEN="your_base_token"  # e.g., Fw8qb31XFaGN6assxmRl0Y5fg9c
-export LARK_TABLE_ID="your_table_id"      # e.g., tblvHm23ajXhrXzp
+export LARK_BASE_TOKEN="your_base_token"  
+export LARK_TABLE_ID="your_table_id"      
 export WHATSAPP_CHAT_ID="your_whatsapp_chat_id"
 ```
 
@@ -71,18 +71,18 @@ The table uses **English field names** (not Chinese). Actual fields discovered v
 
 | Field Name | Type | Purpose | API Field ID |
 |-----------|------|---------|-------------|
-| `Task` | Text (Primary) | Task title | `fldGqKd6IO` |
-| `Description` | Text | Task description | `fldaSa1dTa` |
-| `Assignee` | MultiSelect | Responsible person(s) — values: Vincent, Frances, Man, Viola, Annabelle, SoNim, Kevin | `fld8vAfVsM` |
-| `Progress Log` | Text | Progress tracking notes | `fldqkddLwt` |
-| `Priority` | MultiSelect | Task priority — values: Medium, Medium&Urgent, High, Low | `fldqDGcb6R` |
-| `Status` | SingleSelect | Task status — values: 進行中, 已完成, 已停滯 | `fldXDGMtcv` |
-| `Category` | MultiSelect | Task category | `fldc5DxTvm` |
-| `Start Date` | DateTime (ms) | Task start date | `fldm5SpvmB` |
-| `預計完成日期` | DateTime (ms) | Due date | `fldcYQxDbN` |
-| `實際完成日期` | DateTime (ms) | Actual completion date | `fldKfaor05` |
-| `是否延期` | Formula | Auto-calculated (✅正常 / 🚨已延期) | `fldBBHf90F` |
-| `父記錄` | Two-way link | Parent task link (if subtask) | `fldzmdhoiH` |
+| `Task` | Text (Primary) | Task title | `fldGqXXXXX` |
+| `Description` | Text | Task description | `fldGqXXXXX` |
+| `Assignee` | MultiSelect | Responsible person(s) — values: Vincent, Frances, Man, Viola, Annabelle, SoNim, Kevin | `fldGqXXXXX` |
+| `Progress Log` | Text | Progress tracking notes | `fldGqXXXXX` |
+| `Priority` | MultiSelect | Task priority — values: Medium, Medium&Urgent, High, Low | `fldGqXXXXX` |
+| `Status` | SingleSelect | Task status — values: 進行中, 已完成, 已停滯 | `fldGqXXXXX` |
+| `Category` | MultiSelect | Task category | `fldGqXXXXX` |
+| `Start Date` | DateTime (ms) | Task start date | `fldGqXXXXX` |
+| `預計完成日期` | DateTime (ms) | Due date | `fldGqXXXXX` |
+| `實際完成日期` | DateTime (ms) | Actual completion date | `fldGqXXXXX` |
+| `是否延期` | Formula | Auto-calculated (✅正常 / 🚨已延期) | `fldGqXXXXX` |
+| `父記錄` | Two-way link | Parent task link (if subtask) | `fldGqXXXXX` |
 
 **Important for the reminder script:**
 - Filter by `Status = "進行中"`
@@ -105,7 +105,7 @@ Current live cron job (run `hermes cron list` to verify):
 - **Schedule:** `0 9 * * *` (daily 9:00 AM HKT)
 - **Skills:** `lark-task-daily-reminder`
 - **Toolsets:** `terminal`, `file`
-- **Deliver:** `whatsapp:120363427742617493` (sends directly to WhatsApp group)
+- **Deliver:** `whatsapp:120XXXXXXXXXXXX7493` (sends directly to WhatsApp group)
 - **Next run:** daily at 2026-07-07T09:00:00+08:00
 
 The cron agent:
@@ -125,7 +125,7 @@ The cron agent:
 - Simple bullet points with task names and assignees
 - **Broader rules apply**: See `cross-channel-behavior-rules` → `references/whatsapp-output-rules.md` for the full user-authored rule set covering ALL WhatsApp delivery.
 
-**CRITICAL: Set `--deliver` to `whatsapp:120363427742617493` when creating the job.**
+**CRITICAL: Set `--deliver` to `whatsapp:120XXXXXXXXXXXX7493` when creating the job.**
 If you set `deliver: "local"` (the implicit default), the message is saved to a file and NEVER reaches WhatsApp.
 
 To recreate:
@@ -134,7 +134,7 @@ hermes cron create \
   --name "Lark Task Daily Reminder" \
   --schedule "0 9 * * *" \
   --skills lark-task-daily-reminder \
-  --deliver "whatsapp:120363427742617493" \
+  --deliver "whatsapp:120XXXXXXXXXXXX7493" \
   --enabled_toolsets terminal,file
 ```
 The full prompt text is in `references/cron-prompt-templates.md`. Use `--prompt "$(cat /home/lscm-admin/.hermes/skills/lark-task-daily-reminder/references/cron-prompt-templates.md | sed -n '/^Prompt:/,/^##/p' | tail -n +2)"` to load it directly, or copy it manually.
@@ -354,7 +354,7 @@ ls -t ~/.lark-reminder-logs/reminder_*.json | head -1
 ```
 
 Then use `send_message` with the group target from `send_message(action='list')`
-(e.g. `whatsapp:120363427742617493 (group)`).
+(e.g. `whatsapp:120XXXXXXXXXXXX7493 (group)`).
 
 **Full reference:** `references/cron-api-timeout-recovery.md`
 
@@ -396,10 +396,10 @@ python3 /tmp/test_dates_fix.py
    - Test with sample dates
 
 3. **No WhatsApp message received**
-   - **Most likely cause**: Cron job `deliver` is set to `"local"` instead of `"whatsapp:120363427742617493"`
-   - Fix: Delete the cron job and recreate with `--deliver "whatsapp:120363427742617493"`
+   - **Most likely cause**: Cron job `deliver` is set to `"local"` instead of `"whatsapp:120XXXXXXXXXXXX7493"`
+   - Fix: Delete the cron job and recreate with `--deliver "whatsapp:120XXXXXXXXXXXX7493"`
    - Verify with `hermes cron list` — check the `deliver` field
-   - Lark chat IDs (`42864109191222@lid`) are NOT WhatsApp targets; use the plain numeric ID from `send_message(action='list')` (e.g. `whatsapp:120363427742617493`)
+   - Lark chat IDs (`42864XXXXXX222@lid`) are NOT WhatsApp targets; use the plain numeric ID from `send_message(action='list')` (e.g. `whatsapp:120XXXXXXXXXXXX7493`)
    - Test manual delivery: `send_message(target="whatsapp:<id>", message="test")`
 
 4. **Cron Job Not Running**
@@ -478,7 +478,7 @@ Add support for:
 - **Fixed `_calculate_days_remaining()`**: Removed 9am vs midnight offset mismatch
   - Old: D-1 reminder fires 1 day early (double reminder bug)
   - New: midnight-to-midnight comparison, accurate D-1 detection
-- Fixed cron job `deliver` from `"local"` to `"whatsapp:120363427742617493"` (messages now actually reach WhatsApp)
+- Fixed cron job `deliver` from `"local"` to `"whatsapp:120XXXXXXXXXXXX7493"` (messages now actually reach WhatsApp)
 - Added standalone date calculation test suite
 
 ### v1.1.0 (Updated)

@@ -80,8 +80,8 @@ Store sensitive Lark credentials outside the codebase.
 ### Get LARK APP ID and LARK APP SECRET
 Open Lark Development and click "憑證與基礎信息" on the left
 
-### Get FOLDER ID AND DOC/TABLE ID
-View the document/bitable link directly  (e.g: https://nsgcx69l82ov.sg.larksuite.com/base/foder_id?table_id)
+### Get  DOC/TABLE ID
+View the document/bitable link directly  (e.g: https://nsgcx69l82ov.sg.larksuite.com/base/xxxxxxxxxxxxx?table_id)
 
 Example:
 

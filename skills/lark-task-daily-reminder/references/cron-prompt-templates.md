@@ -9,7 +9,7 @@ hermes cron create \
   --name "Lark Task Daily Reminder" \
   --schedule "0 9 * * *" \
   --skills lark-task-daily-reminder \
-  --deliver "whatsapp:120363427742617493" \
+  --deliver "whatsapp:120XXXXXXXXXXXX7493" \
   --enabled_toolsets terminal,file
 ```
 
@@ -79,7 +79,7 @@ hermes cron create \
   --schedule "0 9 * * *" \
   --no_agent \
   --script /home/lscm-admin/.hermes/skills/lark-task-daily-reminder/scripts/run_reminder.py \
-  --deliver "whatsapp:120363427742617493"
+  --deliver "whatsapp:120XXXXXXXXXXXX7493"
 ```
 
 **Caveats:**

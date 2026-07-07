@@ -6,7 +6,7 @@ This document details how to set up and manage the Lark task reminder system usi
 
 **Job ID:** `3987627b8a50`
 **Schedule:** `0 9 * * *` (daily 9:00 AM HKT)
-**Deliver:** `whatsapp:120363427742617493`
+**Deliver:** `whatsapp:120XXXXXXXXXXXX7493`
 **Script:** `run_reminder.py` v3 (timeout=30s, retry=3/backoff=2s, concurrency=5)
 **Toolsets:** `terminal`, `file`
 
@@ -16,7 +16,7 @@ The `deliver` field determines WHERE the cron agent's response goes:
 
 | Value | Behavior |
 |-------|----------|
-| `whatsapp:120363427742617493` | ✅ Sends to WhatsApp group |
+| `whatsapp:120XXXXXXXXXXXX7493` | ✅ Sends to WhatsApp group |
 | `"local"` | ❌ Saves to file only — **NEVER reaches WhatsApp** |
 | `"origin"` | Sends back to the creating channel (usually CLI) |
 | `"all"` | Fans out to every connected channel |
@@ -71,7 +71,7 @@ grep -a "delivered to.*whatsapp\|3987627b8a50" ~/.hermes/logs/agent.log
 
 ### Messages Never Reach WhatsApp
 - **Check**: `hermes cron list` — look at the `deliver` field
-- **If "local"**: Must delete and recreate with `--deliver "whatsapp:120363427742617493"`
+- **If "local"**: Must delete and recreate with `--deliver "whatsapp:120XXXXXXXXXXXX7493"`
 
 ### Script Fails
 - Built-in retry (3x with backoff) handles transient failures

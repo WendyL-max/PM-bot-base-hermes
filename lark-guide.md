@@ -61,9 +61,9 @@ Hermes creates with one click, you can refer(https://hermes-agent.nousresearch.c
 Hermes must be granted the permissions needed to read and write Lark resources.
 
 The specific permissions depend on your implementation, but in the Lark segment you usually need permissions to access the following business sections:
-- Messages and Groups
-- multidimensional table(base:xxxx:xxx)
-- Cloud documents
+- 消息與群組(im:xxxx:xxxxx)
+- 多維表格(base:xxxx:xxx)
+- 云文檔(bitable:xxxx/docs:xxx:xxxxx)
 
 
 ### Permission principle
@@ -77,6 +77,12 @@ Only after the permissions are opened on the Lark side, Hermes can obtain subseq
 
 Store sensitive Lark credentials outside the codebase.
 
+### Get LARK APP ID and LARK APP SECRET
+Open Lark Development and click "憑證與基礎信息" on the left
+
+### Get FOLDER ID AND DOC/TABLE ID
+View the document/bitable link directly  (e.g: https://nsgcx69l82ov.sg.larksuite.com/base/foder_id?table_id)
+
 Example:
 
 ```bash
@@ -85,4 +91,4 @@ LARK_APP_SECRET=your_lark_app_secret
 LARK_DOC_ID=your_target_doc_id
 LARK_BASE_ID=your_target_base_id
 LARK_TABLE_ID=your_target_table_id
-LARK_WEBHOOK_URL=your_webhook_url
+
